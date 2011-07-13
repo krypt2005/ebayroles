@@ -1,0 +1,45 @@
+<div align="center">
+<p id="notice"><%= notice %></p>
+
+ <table style="border:1px solid black" width="40%">
+ <tr>
+   <td align="left"><b>Name:</b> </td>
+   <td align="left"><%= @ead.name %></td>
+</tr>
+
+<tr>
+   <td align="left">
+  <b>Description:</b></td>
+  <td align="left"><%= @ead.description %></td>
+</tr>
+
+<tr>
+   <td align="left">
+  <b>Price:</b></td>
+  <td align="left"><%= @ead.price %></td>
+</tr>
+
+   <tr>
+   <td align="left">
+  <b>Seller:</b> </td>
+  <td align="left"><%= @ead.seller_id %>  </td>
+</tr>
+
+<tr>
+   <td align="left">
+  <b>Email:</b> </td>
+  <td align="left"><%= @ead.email %>    </td>
+</tr>
+
+<tr>
+   <td align="left">
+  <b>Image:</b>  </td>
+ <td align="left"> <img src="<%= @ead.img_url %>" alt="Rose" height="100" width="100"/>   </td>
+</tr>
+
+  </table>
+
+
+</div> <br/>
+<%= link_to 'Edit', edit_ead_path(@ead) %> |
+<%= link_to 'Back', eads_path %>

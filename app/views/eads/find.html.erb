@@ -1,0 +1,30 @@
+
+<h2>Your Search Results For <span style="color:green;"><%=params[:searchfield] %></span></h2>
+
+              <table style="border:1px solid black" width="90%">
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Seller</th>
+                  <th>Email</th>
+                  <th>Img url</th>
+                  <th colspan="3">Links</th>
+                </tr>
+
+              <% @eads.each do |ead| %>
+                <tr>
+                  <td><%= ead.name %></td>
+                  <td><%= ead.description %></td>
+                  <td><%= ead.price %></td>
+                  <td><%= ead.seller_id %></td>
+                  <td><%= ead.email %></td>
+                  <td><img src="<%= ead.img_url %>" alt="Rose" height="100" width="100"/></td>
+                  <td><%= link_to 'Show', ead %></td>
+                  <td><%= link_to 'Edit', edit_ead_path(ead) %></td>
+                  <td><%= link_to 'Delete', ead, :confirm => 'Are you sure to delete?', :method => :delete %></td>
+                </tr>
+              <% end %>
+              </table>
+
+              <br />

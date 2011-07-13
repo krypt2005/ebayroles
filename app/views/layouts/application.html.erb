@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ebay</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <style type="text/css">
+    body{
+         background-color:lightgray;
+        }
+    div.field{
+        font-weight:bold;
+    }
+          a {
+    color: blue;
+                  }
+    a:visited {
+                color: blue;
+                  }
+    a:hover{ color:green;
+           background-color:#d3d3d3;}
+     td{
+         text-align:center;
+     }
+     th{
+         background-color:#90ee90;
+     }
+     textarea{
+         width:200px;
+         height:100px;
+     }
+      #header{
+          background-color:#ffb6c1;
+          font-weight:bold;
+          height:110px;
+          padding:5px;
+
+      }
+
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+/*globalnav*/
+
+#globalnav {
+	position:relative;
+	float:left;
+	width:100%;
+	padding:0 0 1.75em 1em;
+	margin:0;
+	list-style:none;
+	line-height:1em;
+}
+
+#globalnav LI {
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+#globalnav A {
+	display:block;
+	color:#444;
+	text-decoration:none;
+	font-weight:bold;
+	background:#ffd700;
+	margin:0;
+	padding:0.25em 1em;
+	border-left:1px solid #fff;
+	border-top:1px solid #fff;
+	border-right:1px solid #aaa;
+}
+
+#globalnav A:hover,
+#globalnav A:active,
+#globalnav A.here:link,
+#globalnav A.here:visited {
+	background:#90ee90;
+}
+
+#globalnav A.here:link,
+#globalnav A.here:visited {
+	position:relative;
+	z-index:102;
+}
+
+
+  </style>
+
+</head>
+<body>
+<p><%= flash[:alert] %></p>
+ <div id="header"><h2 style="text-align:center">
+   <img src="http://www.iconeasy.com/icon/thumbnails/System/Glossy%20Red%20Web/Cart%20Icon.jpg" />
+   Welcome To Ebay</h2>
+   <div>
+       <div style="float:right;">
+   <%= form_tag "/eads/find" do  %>
+    <%= text_field_tag :searchfield %>
+       <%= submit_tag "search" %>
+     <% end %>
+   </div>
+	<div id="tabs" style="float:left;">
+			<ul id="globalnav">
+              <% if can? :create, @ead %>
+                <li><a href="/">Home</a></li>
+               <% end %>
+                <li><a href="/eads">Ads</a></li>
+				<li><a href="/eads/new">Create Ad</a></li>
+              	<li><a href="/users">Users</a></li>
+              <li><a href="/login">Login</a></li>
+
+			</ul>
+
+          </div>
+     </div>
+
+   <div style="float:right;margin-top: -50px; margin-right: -150px;">
+        <% if current_user %> Welcome <%=current_user.username%>
+        <%= link_to "Edit Profile", edit_user_path(current_user.id)%>
+        <%= link_to "Logout", :logout%>
+        <% else %>
+        <%= link_to "Register", new_user_path%> |
+        <%= link_to "Login", :login %>
+        <% end %>
+    </div>
+
+ </div>
+
+
+
+       <%= yield %>
+</body>
+</html>

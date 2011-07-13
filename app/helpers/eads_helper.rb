@@ -1,0 +1,2 @@
+module EadsHelper
+end

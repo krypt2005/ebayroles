@@ -1,0 +1,8 @@
+<div align="center">
+<h1>New Ad</h1> </div>
+  <% if can? :create, @ead %>
+<%= render 'form' %>
+
+
+<%= link_to 'Back', eads_path %>
+<%end%>
